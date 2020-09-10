@@ -2,6 +2,7 @@ require 'pry'
 
 class Pokemon
   
+
   attr_accessor :id, :name, :type, :hp, :db
   
 
@@ -11,7 +12,7 @@ class Pokemon
     @type = type
     @hp = hp
     @db = db
-    
+
   end
   
    def self.save(name, type, db)
@@ -30,10 +31,13 @@ class Pokemon
       FROM pokemon 
       WHERE id = ?;
     SQL
+
     data = db.execute(sql, id).flatten
     #binding.pry
     Pokemon.new(id: data[0], name: data[1], type: data[2], db: db)
-    
+    DB[:conn].execute(sql, [id]).flatten
+    self.new(id)
+
   end
   
   
