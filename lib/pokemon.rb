@@ -36,7 +36,7 @@ class Pokemon
     #binding.pry
     Pokemon.new(id: data[0], name: data[1], type: data[2], db: db)
     #DB[:conn].execute(sql, [id]).flatten
-    self.new(id)
+    #self.new(id)
 
   end
   
